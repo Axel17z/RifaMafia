@@ -148,8 +148,8 @@
                 
                 <div class="ms-auto d-flex align-items-center">
                     <div class="me-3 text-end d-none d-sm-block">
-                        <p class="mb-0 fw-bold">Admin Usuario</p>
-                        <small class="text-muted">Administrador</small>
+                        <p class="mb-0 fw-bold"><?= session()->get('usuario.nombre') ?></p>
+                        <small class="text-muted"><?= session()->get('usuario.email') ?></small>
                     </div>
                     <img src="https://ui-avatars.com/api/?name=Admin&background=4e73df&color=fff" class="rounded-circle" width="40">
                 </div>

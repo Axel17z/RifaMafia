@@ -4,7 +4,7 @@
 Modelo: Se conecta a la tabla de la base de datos
 
 Controlador: logica de programacion (CRUD)
-             y salida de datos(imprimir, view html, json, redireccion)
+ y salida de datos(imprimir, view html, json, redireccion)
 
 Routes: indicamos que url va a acceder a que funcion de que controlador
 
@@ -22,6 +22,11 @@ class UsuarioController extends  BaseController{
 #GET Mostrar usuarios (VIEW)
 # route:  /
 public function index(){
+
+    if (!session()->has('usuario')){
+        return redirect()->to('/usuarios/login');
+    }
+
     $model = new UsuarioModel();
 
     $usuarios =  $model->findAll();
@@ -173,6 +178,10 @@ public function delete($id){
 #/login
 
 public function login(){
+    if (session()->has('usuario'))
+        return redirect()->to('/usuarios');
+    
+    
     return view("usuarios/login");
 }
 
@@ -188,7 +197,7 @@ public function auth(){
 
     if($usuario && password_verify($contrasena, $usuario["password"])){
     $data=array("usuario" =>$usuario);
-
+    session()->set($data);
     return redirect()->to("/usuarios");
 
     
