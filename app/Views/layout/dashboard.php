@@ -132,7 +132,7 @@
         </ul>
 
         <div class="position-absolute bottom-0 w-100 p-3">
-            <a href="#" class="nav-link text-danger">
+            <a href="/usuarios/logout" class="nav-link text-danger">
                 <i class="bi bi-box-arrow-left"></i>
                 <span>Cerrar Sesión</span>
             </a>

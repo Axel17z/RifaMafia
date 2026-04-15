@@ -57,7 +57,7 @@ $routes->group("usuarios", function($routes){
     $routes->post("auth", "UsuarioController::auth");
 
     #post accion: logout
-    $routes->post("logout", "UsuarioController::logout");
+    $routes->get("logout", "UsuarioController::logout");
 
     $routes->get("activar/(:num)/(:num)","UsuarioController::activar/$1/$2");
 });

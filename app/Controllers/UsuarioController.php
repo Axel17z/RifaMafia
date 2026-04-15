@@ -198,11 +198,12 @@ public function auth(){
     if($usuario && password_verify($contrasena, $usuario["password"])){
     $data=array("usuario" =>$usuario);
     session()->set($data);
+
     return redirect()->to("/usuarios");
 
     
     }else{
-    return redirect()->to("/usuarios/login")->with("msg", "Credenciales incorrectas o usuario inactivo");
+    return redirect()->to("/usuarios/login")->withInput()->with("msg", "Credenciales incorrectas o usuario inactivo");
     }
 }
 
@@ -210,6 +211,6 @@ public function auth(){
 #/logout
 
 public function logout(){
-    echo "aqui va el cerrar sesion";
-}
-}
+    session()->destroy();
+    return redirect()->to("/usuarios/login")->with("msg", "Sesion cerrada correctamente");
+}}

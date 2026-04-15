@@ -96,13 +96,19 @@
                 <form action ="/usuarios/auth" method="POST" >
                     <div class="mb-3">
                         <label class="form-label text-secondary small fw-bold">Correo Electrónico</label>
-                        <input name="email" type="email" class="form-control" placeholder="ejemplo@correo.com" required>
+                        <input name="email" value="<?= old('email') ?>" type="email" class="form-control" placeholder="ejemplo@correo.com" required>
                     </div>
                    
                     <div class="mb-4">
                         <label class="form-label text-secondary small fw-bold">Contraseña</label>
                         <input name="contrasena" type="password" class="form-control" placeholder="••••••••" required>
                     </div>
+              
+                    <?php if(session()->getFlashdata("msg") ){ ?> 
+                         <div class="alert alert-dangerus" style="color: #ee1d4a; font-weight: bold: ">
+                            <?= session()->getFlashdata("msg")  ?>
+                        </div>  
+                    <?php } ?>
                    
                     <div class="d-grid">
                         <button type="submit" class="btn btn-modern">Iniciar Sesión</button>
