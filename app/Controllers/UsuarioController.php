@@ -23,6 +23,9 @@ class UsuarioController extends  BaseController{
 # route:  /
 public function index(){
 
+    if(seguridad()){return seguridad();}
+
+
     if (!session()->has('usuario')){
         return redirect()->to('/usuarios/login');
     }
@@ -46,6 +49,8 @@ public function index(){
 #/(:num) 
 public function show($id)
     {
+        if(seguridad()){return seguridad();}
+
         $model = new UsuarioModel();
         $usuario = $model->find($id);
 
@@ -59,12 +64,18 @@ public function show($id)
 #/create 
 
 public function create(){
+        
+    if(seguridad()){return seguridad();}
+
     return view("usuarios/usuarios_create");
 }
 
 #POST accion: crear usuario  (redicrecciona -> usuarios/{id})
 #/store 
 public function store() {
+    
+    if(seguridad()){return seguridad();}
+
     // 1.instanciar modelo para agregar usuario model para conectarnos a la DB
     $model = new UsuarioModel();
 
@@ -127,6 +138,7 @@ public function store() {
     
     //9. enviar correo
     if($email->send()){
+    
     // 10. redireccionar a index con el mensaje de usuario creado
         return redirect()->to('/usuarios')->with('msg', 'Usuario creado exitosamente, ve a tu correo y activalo!');
     }else{
@@ -141,6 +153,8 @@ public function store() {
 #/edit/(:num) 
 
 public function edit($id){
+    if(seguridad()){return seguridad();}
+
     $model = new UsuarioModel();
     $data = array(
         "usuario" =>$model->find($id)
@@ -151,6 +165,8 @@ public function edit($id){
 #POST Accion: actualizar info del usuario {id} en la base de datos (Redireccion -> /usuarios)
 #/update/(:num) 
 public function update($id){
+    if(seguridad()){return seguridad();}
+
     $model = new UsuarioModel();
     $datos = array();
 
@@ -169,6 +185,8 @@ public function update($id){
 #/delete/(:num) 
 
 public function delete($id){
+    if(seguridad()){return seguridad();}
+
     $model = new UsuarioModel();
     $model->delete($id);
     return redirect()->to('/usuarios')->with('msg', 'Usuario eliminado!');
@@ -178,8 +196,7 @@ public function delete($id){
 #/login
 
 public function login(){
-    if (session()->has('usuario'))
-        return redirect()->to('/usuarios');
+    if (noSeguridad()){ return noSeguridad(); } 
     
     
     return view("usuarios/login");
@@ -189,6 +206,9 @@ public function login(){
 #/login/auth 
 
 public function auth(){
+        
+    if (noSeguridad()){ return noSeguridad(); } 
+
     $email = $this->request->getPost("email");
     $contrasena = $this->request->getPost("contrasena");
 
@@ -211,6 +231,8 @@ public function auth(){
 #/logout
 
 public function logout(){
+    if(seguridad()){return seguridad();}
+
     session()->destroy();
     return redirect()->to("/usuarios/login")->with("msg", "Sesion cerrada correctamente");
 }}
