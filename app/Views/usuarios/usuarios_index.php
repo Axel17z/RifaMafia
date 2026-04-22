@@ -33,8 +33,14 @@
                         <td> <?= $usuario["status"];  ?> </td>
                         <td>
                             <a href="/usuarios/<?= $usuario["id"]; ?>" class="btn btn-dark btn-sm " ><i class="bi bi-eye"></i></a>
+
+                        <?php if(session()->get('usuario.rol') === 'admin' OR session()->get('usuario.rol') === 'trabajador') { ?>    
                             <a href="/usuarios/edit/<?= $usuario["id"]; ?>"  class="btn btn-primary  btn-sm " ><i class="bi bi-pencil-square"></i> </a>
+                        <?php } ?>
+
+                            <?php if(session()->get('usuario.rol') === 'admin' ) { ?>   
                             <button onClick="eliminar(<?= $usuario["id"];  ?>)"   class="btn btn-danger  btn-sm" > <i class="bi bi-trash"></i> </button>
+                        <?php } ?>
                         </td>
                     </tr> <!-- fin renglon  -->
                 <?php }  ?>  

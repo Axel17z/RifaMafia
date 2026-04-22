@@ -165,8 +165,7 @@ public function edit($id){
 #POST Accion: actualizar info del usuario {id} en la base de datos (Redireccion -> /usuarios)
 #/update/(:num) 
 public function update($id){
-    if(seguridad()){return seguridad();}
-
+    if(seguridad( ['admin', 'trabajador'] )){return seguridad();}
     $model = new UsuarioModel();
     $datos = array();
 
@@ -185,7 +184,7 @@ public function update($id){
 #/delete/(:num) 
 
 public function delete($id){
-    if(seguridad()){return seguridad();}
+    if(seguridad( ['admin'] )){return seguridad();}
 
     $model = new UsuarioModel();
     $model->delete($id);
