@@ -218,11 +218,14 @@ public function auth(){
     $data=array("usuario" =>$usuario);
     session()->set($data);
 
-    return redirect()->to("/usuarios");
-
-    
+    if(session()->get('usuario.rol') =="Cliente"){
+        return redirect()->to("/usuarios/".session()->get('usuario.id'));
     }else{
-    return redirect()->to("/usuarios/login")->withInput()->with("msg", "Credenciales incorrectas o usuario inactivo");
+        return redirect()->to("/usuarios");
+        }
+
+    }else{ 
+        return redirect()->to("/usuarios/login")->withInput()->with("msg", "Credenciales incorrectas o usuario inactivo");
     }
 }
 

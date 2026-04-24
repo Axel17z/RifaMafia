@@ -111,12 +111,15 @@
         </div>
         
         <ul class="nav flex-column">
+        <?php if(session()->get('usuario.rol') == "admin" OR session()->get('usuario.rol') == "trabajador"){ ?>
             <li class="nav-item">
-                <a href="/usuarios" class="nav-link <?= (url_is('usuarios*')) ? 'active' : '' ?>">
-                    <i class="bi bi-person-fill"></i>
+                <a href="/usuarios" class="nav-link active">
+                    <i class="bi bi-grid-1x2-fill"></i>
                     <span>Usuarios</span>
                 </a>
             </li>
+        <?php } ?>
+
             <li class="nav-item">
                 <a href="#" class="nav-link">
                     <i class="bi bi-ticket-perforated"></i>
