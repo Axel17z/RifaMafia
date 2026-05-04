@@ -109,7 +109,11 @@
                             <?= session()->getFlashdata("msg")  ?>
                         </div>  
                     <?php } ?>
-                   
+
+                    <?phpreCaptcha2Html(); ?>
+                    <?phpreCaptcha2Script(); ?>
+
+
                     <div class="d-grid">
                         <button type="submit" class="btn btn-modern">Iniciar Sesión</button>
                     </div>

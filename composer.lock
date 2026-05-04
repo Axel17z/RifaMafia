@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "657ac079313fab046eb8c29fe1d6992b",
+    "content-hash": "c6d62ab3fe0cf8c9e83d5da1dd3bc8bc",
     "packages": [
         {
             "name": "codeigniter4/framework",
@@ -140,6 +140,74 @@
                 }
             ],
             "time": "2025-10-14T18:31:13+00:00"
+        },
+        {
+            "name": "phpdevsr/recaptcha-codeigniter4",
+            "version": "2.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHPDevsr/reCaptcha-Codeigniter4.git",
+                "reference": "e31de899fa7d09f0e57292e185ffb03087a16253"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHPDevsr/reCaptcha-Codeigniter4/zipball/e31de899fa7d09f0e57292e185ffb03087a16253",
+                "reference": "e31de899fa7d09f0e57292e185ffb03087a16253",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4 || ^8.0"
+            },
+            "require-dev": {
+                "codeigniter/coding-standard": "^1.7",
+                "codeigniter4/framework": "^4.3",
+                "nexusphp/tachycardia": "^1.4",
+                "php-coveralls/php-coveralls": "^2.5",
+                "phpstan/phpstan": "^1.10",
+                "phpunit/phpcov": "^8.2",
+                "phpunit/phpunit": "^9.6",
+                "rector/rector": "1.0.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PHPDevsr\\Recaptcha\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Denny Septian Panggabean",
+                    "email": "xamidimura@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Free to Use Library reCAPTCHA v2 for Codeigniter 4",
+            "homepage": "https://github.com/PHPDevsr/reCaptcha-Codeigniter4",
+            "keywords": [
+                "codeigniter",
+                "codeigniter4",
+                "google-recaptcha",
+                "recaptcha"
+            ],
+            "support": {
+                "issues": "https://github.com/PHPDevsr/reCaptcha-Codeigniter4/issues",
+                "source": "https://github.com/PHPDevsr/reCaptcha-Codeigniter4/tree/2.1.1"
+            },
+            "funding": [
+                {
+                    "url": "https://paypal.me/hexageek1337",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/ddevsr",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-02-14T08:54:08+00:00"
         },
         {
             "name": "psr/log",

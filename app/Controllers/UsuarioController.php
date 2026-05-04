@@ -208,6 +208,25 @@ public function auth(){
         
     if (noSeguridad()){ return noSeguridad(); } 
 
+    $reglas = [
+        'email'      => [
+            'rules' => 'required|valid_email]',
+             'errors' => [
+                'valid_email' =>'El formato del correo es invalido'
+            ]
+        ],
+        'contrasena' => [
+            'label'  => 'Contraseña',
+            'rules'  => 'required|min_length[8]|max_length[30]]',
+            'errors' => [ ]
+        ]
+    ];
+
+    // 3. Ejecutamos la validación
+    if (!$this->validate($reglas)) {  
+         return redirect()->back()->withInput()->with('errors', $this->validator->getErrors()); 
+    }     
+
     $email = $this->request->getPost("email");
     $contrasena = $this->request->getPost("contrasena");
 
